@@ -577,6 +577,7 @@ void context::place_light_source(void* handle)
 }
 
 /// return maximum number of light sources, that can be enabled in parallel 
+// why only 8?
 unsigned context::get_max_nr_enabled_light_sources() const
 {
 	return 8;

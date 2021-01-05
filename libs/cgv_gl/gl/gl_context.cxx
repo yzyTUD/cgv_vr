@@ -343,6 +343,7 @@ void gl_context::init_render_pass()
 	}
 	//glMatrixMode(GL_MODELVIEW);
 	if ((get_render_pass_flags()&RPF_SET_MODELVIEW) != 0)
+		// change here to change initialized view port 
 		set_modelview_matrix(cgv::math::look_at4<double>(vec3(0,0,10), vec3(0,0,0), vec3(0,1,0)));
 	
 	if (check_gl_error("gl_context::init_render_pass before init_frame"))
@@ -1078,7 +1079,9 @@ void gl_context::draw_edges_of_faces(
 	release_attributes(normals, tex_coords, normal_indices, tex_coord_indices);
 }
 
-
+// OpenGL mainly works with triangles, to avoid some overlap on the vertices specified
+// An EBO is a buffer, just like a vertex buffer object, that stores indices that OpenGL uses to decide what vertices to draw
+// This so called indexed drawing
 void gl_context::draw_elements_void(GLenum mode, size_t total_count, GLenum type, size_t type_size, const void* indices) const
 {
 	ensure_configured();

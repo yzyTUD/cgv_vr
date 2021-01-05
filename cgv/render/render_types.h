@@ -13,6 +13,7 @@ namespace cgv {
 
 		struct render_types
 		{
+			// in a very short form 
 			/// declare rgb color type
 			typedef cgv::media::color<float, cgv::media::RGB> rgb;
 			/// declare rgba color type

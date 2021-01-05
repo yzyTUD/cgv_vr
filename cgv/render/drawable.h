@@ -11,6 +11,7 @@ namespace cgv {
 	namespace render {
 
 /** base class for all drawables, which is independent of the used rendering API. */
+// similar to the case of context 
 class CGV_API drawable : public base::traverse_policy, public render_types
 {
 private:

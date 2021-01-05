@@ -16,6 +16,7 @@ namespace cgv {
 	vertex attribute is attached to a program location that can be queried from a shader_program
 	with the get_attribute_location() function. The element array can only be set to a vertex_buffer
 	object of type VBT_INDICES with the function set_element_array(). */
+// indexed rendering, attached to a program location
 class CGV_API attribute_array_binding : public attribute_array_binding_base
 {
 	int get_attribute_location(const context& ctx, const shader_program& prog, const std::string& attr_name) const;

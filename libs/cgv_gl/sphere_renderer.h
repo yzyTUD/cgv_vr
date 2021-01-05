@@ -15,6 +15,7 @@ namespace cgv { // @<
 		extern CGV_API sphere_renderer& ref_sphere_renderer(context& ctx, int ref_count_change = 0);
 
 		/** render style for sphere rendere */
+		// halo realated stuffs and redius 
 		struct CGV_API sphere_render_style : public surface_render_style
 		{
 			/*@name sphere rendering attributes*/

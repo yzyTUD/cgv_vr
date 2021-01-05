@@ -29,6 +29,8 @@ extern CGV_API void set_material(const cgv::media::illum::phong_material& mat, M
 
 /** implementation of the context API for the OpenGL API excluding methods for font selection, redraw and
     initiation of render passes. */
+// the impl with opengl of the context API
+// the main contribution is the context api, easy to use, highly flexible 
 class CGV_API gl_context : public render::context
 {
 private:

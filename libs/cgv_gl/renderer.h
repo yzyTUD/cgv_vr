@@ -17,6 +17,8 @@ namespace cgv { // @<
 			virtual ~render_style();
 		};
 		/// attribute array manager used to upload arrays to gpu
+		// manages aab, similar to vao. 
+		// this is manager class, helps to upload arrays to gpu, but the actual code is in aab 
 		class CGV_API attribute_array_manager
 		{
 		protected:
@@ -27,6 +29,7 @@ namespace cgv { // @<
 			/// give renderer access to protected members
 			friend class renderer;
 			/// 
+			// set the indices for each point position 
 			template <typename T>
 			bool set_indices(const context& ctx, const T& array)
 			{
@@ -173,6 +176,7 @@ namespace cgv { // @<
 		{
 		private:
 			/// shader program
+			// a render has only one shader prog 
 			shader_program prog;
 			/// otherwise keep track of enabled arrays
 			std::set<int> enabled_attribute_arrays;
@@ -258,6 +262,7 @@ namespace cgv { // @<
 			/// abstract initialize method creates default render style, derived renderers to load the shader program
 			virtual bool init(context& ctx);
 			/// templated method to set the position attribute from a vector of positions of type T
+			//// a typical way to upload data from cpu to gpu starting from opengl3.3 
 			template <typename T>
 			void set_position_array(const context& ctx, const std::vector<T>& positions) { has_positions = true; set_attribute_array(ctx, ref_prog().get_attribute_location(ctx, "position"), positions); }
 			/// templated method to set the position attribute from a vector of positions of type T

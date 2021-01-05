@@ -39,6 +39,9 @@ struct CGV_API performance_task
 	supports storage of performance information in a file and prepares everything for
 	rendering performance measurements, where the actually rendering is implemented in
 	libs/cgv_gl/gl/gl_performance_monitor. */
+//The performance monitor 
+//supports storage of performance information in a fileand prepares everything for
+//rendering performance measurements
 class CGV_API performance_monitor
 {
 public:

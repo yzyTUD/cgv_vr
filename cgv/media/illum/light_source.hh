@@ -10,6 +10,7 @@ namespace cgv { //@<
 		namespace illum { //@<
 
 ///@>different light source types
+// maybe more? area light? blooming light 
 enum LightType { LT_DIRECTIONAL, LT_POINT, LT_SPOT };
 
 ///@>simple class to hold the properties of a light source

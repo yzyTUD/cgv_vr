@@ -18,6 +18,8 @@
 
 #include "lib_begin.h"
 
+// used for main context, manages [bkg, light, shader progs, cursor, basic tesellation, soft push_modelview_matrix  ...] basic stuffs 
+
 namespace cgv {
 	namespace render {
 
@@ -56,6 +58,7 @@ struct type_descriptor
 };
 
 /// enumeration of rendering APIs which can be queried from the context
+// vulkan? 
 enum RenderAPI {
 	RA_OPENGL,
 	RA_DIRECTX
@@ -201,6 +204,7 @@ enum TextureSampling
 };
 
 /// different sampling strategies for rendering to textures that steer the computation of the \c tex_coord input to the fragment shader
+// frag texssel related 
 enum CompareFunction
 {
 	CF_LEQUAL,
@@ -214,6 +218,7 @@ enum CompareFunction
 };
 
 /// different text alignments
+// supports diff align
 enum TextAlignment {
 	TA_NONE = 0,
 	TA_LEFT = 1,    // center of left edge of text bounds
@@ -342,6 +347,7 @@ public:
 
 
 /// different vertex buffer types
+// may need more? to upload more vertex attributes 
 enum VertexBufferType {
 	VBT_UNDEF = -1,
 	VBT_VERTICES,
@@ -384,6 +390,7 @@ public:
 };
 
 /// different shader types
+// shader types !
 enum ShaderType { ST_DETECT, ST_COMPUTE, ST_VERTEX, ST_TESS_CONTROL, ST_TESS_EVALUTION, ST_GEOMETRY, ST_FRAGMENT };
 
 /// different frame buffer types which can be combined together with or
@@ -517,6 +524,7 @@ struct window_transformation
 };
 
 /** base class for all drawables, which is independent of the used rendering API. */
+// the context api, just list all required items, many of them can be imp. by gl, or others, that is, indepent of the rendering api 
 class CGV_API context : public render_types, public context_config
 {
 public:
@@ -551,6 +559,7 @@ protected:
 	/// whether to support view and lighting management of compatibility mode, defaults to true
 	bool support_compatibility_mode;
 	/// whether to do all drawing in compatibility mode, only possible if support_compatibility_mode is true, , defaults to false
+	// use opengl2 to render 
 	bool draw_in_compatibility_mode;
 	/// whether to debug render passes
 	bool debug_render_passes;
@@ -753,6 +762,7 @@ public:
 	void set_debug_render_passes(bool _debug);
 	/// check whether render passes are debugged
 	bool get_debug_render_passes() const { return debug_render_passes; }
+	// the impl is located in gl_xxx source files 
 	/// return whether the context is currently in process of rendering
 	virtual bool in_render_process() const = 0;
 	/// return whether the context is created
@@ -1075,6 +1085,7 @@ public:
 		the glPushMatrix function. Use pop_V() to restore the pushed viewing matrix
 		into the current viewing matrix. Don't intermix these methods with the 
 		correspondong opengl or directx functions.*/
+	// software impl, no max limitations 
 	void push_modelview_matrix();
 	/// see push_V for an explanation
 	void pop_modelview_matrix();
